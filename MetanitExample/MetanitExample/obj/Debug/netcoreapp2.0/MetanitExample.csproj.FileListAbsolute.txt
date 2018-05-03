@@ -9,3 +9,14 @@ C:\Users\Dmitry.Khusnetdinov\source\repos\MetanitExample\MetanitExample\obj\Debu
 C:\Users\Dmitry.Khusnetdinov\source\repos\MetanitExample\MetanitExample\obj\Debug\netcoreapp2.0\MetanitExample.AssemblyInfo.cs
 C:\Users\Dmitry.Khusnetdinov\source\repos\MetanitExample\MetanitExample\obj\Debug\netcoreapp2.0\MetanitExample.dll
 C:\Users\Dmitry.Khusnetdinov\source\repos\MetanitExample\MetanitExample\obj\Debug\netcoreapp2.0\MetanitExample.pdb
+C:\Users\Dmitry.Khusnetdinov\source\repos\MetanitExampleRep\MetanitExample\MetanitExample\bin\Debug\netcoreapp2.0\MetanitExample.deps.json
+C:\Users\Dmitry.Khusnetdinov\source\repos\MetanitExampleRep\MetanitExample\MetanitExample\bin\Debug\netcoreapp2.0\MetanitExample.runtimeconfig.json
+C:\Users\Dmitry.Khusnetdinov\source\repos\MetanitExampleRep\MetanitExample\MetanitExample\bin\Debug\netcoreapp2.0\MetanitExample.runtimeconfig.dev.json
+C:\Users\Dmitry.Khusnetdinov\source\repos\MetanitExampleRep\MetanitExample\MetanitExample\bin\Debug\netcoreapp2.0\MetanitExample.dll
+C:\Users\Dmitry.Khusnetdinov\source\repos\MetanitExampleRep\MetanitExample\MetanitExample\bin\Debug\netcoreapp2.0\MetanitExample.pdb
+C:\Users\Dmitry.Khusnetdinov\source\repos\MetanitExampleRep\MetanitExample\MetanitExample\obj\Debug\netcoreapp2.0\MetanitExample.csprojResolveAssemblyReference.cache
+C:\Users\Dmitry.Khusnetdinov\source\repos\MetanitExampleRep\MetanitExample\MetanitExample\obj\Debug\netcoreapp2.0\MetanitExample.csproj.CoreCompileInputs.cache
+C:\Users\Dmitry.Khusnetdinov\source\repos\MetanitExampleRep\MetanitExample\MetanitExample\obj\Debug\netcoreapp2.0\MetanitExample.AssemblyInfoInputs.cache
+C:\Users\Dmitry.Khusnetdinov\source\repos\MetanitExampleRep\MetanitExample\MetanitExample\obj\Debug\netcoreapp2.0\MetanitExample.AssemblyInfo.cs
+C:\Users\Dmitry.Khusnetdinov\source\repos\MetanitExampleRep\MetanitExample\MetanitExample\obj\Debug\netcoreapp2.0\MetanitExample.dll
+C:\Users\Dmitry.Khusnetdinov\source\repos\MetanitExampleRep\MetanitExample\MetanitExample\obj\Debug\netcoreapp2.0\MetanitExample.pdb

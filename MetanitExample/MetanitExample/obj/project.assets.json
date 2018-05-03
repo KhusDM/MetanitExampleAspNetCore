@@ -12543,11 +12543,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Dmitry.Khusnetdinov\\source\\repos\\MetanitExample\\MetanitExample\\MetanitExample.csproj",
+      "projectUniqueName": "C:\\Users\\Dmitry.Khusnetdinov\\source\\repos\\MetanitExampleRep\\MetanitExample\\MetanitExample\\MetanitExample.csproj",
       "projectName": "MetanitExample",
-      "projectPath": "C:\\Users\\Dmitry.Khusnetdinov\\source\\repos\\MetanitExample\\MetanitExample\\MetanitExample.csproj",
+      "projectPath": "C:\\Users\\Dmitry.Khusnetdinov\\source\\repos\\MetanitExampleRep\\MetanitExample\\MetanitExample\\MetanitExample.csproj",
       "packagesPath": "C:\\Users\\Dmitry.Khusnetdinov\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Dmitry.Khusnetdinov\\source\\repos\\MetanitExample\\MetanitExample\\obj\\",
+      "outputPath": "C:\\Users\\Dmitry.Khusnetdinov\\source\\repos\\MetanitExampleRep\\MetanitExample\\MetanitExample\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
