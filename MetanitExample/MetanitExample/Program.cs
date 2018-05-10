@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.Extensions.Logging;
 
 namespace MetanitExample
 {
@@ -13,6 +14,7 @@ namespace MetanitExample
         public static IWebHost BuildWebHost(string[] args) =>
             WebHost.CreateDefaultBuilder(args)
                 .UseStartup<Startup>()
+                .ConfigureLogging(configureLogging => configureLogging.SetMinimumLevel(LogLevel.Trace))
                 .Build();
     }
 }

@@ -1,0 +1,36 @@
+Hosting starting
+Hosting started
+Loaded hosting startup assembly MetanitExample
+Loaded hosting startup assembly Microsoft.AspNetCore.ApplicationInsights.HostingStartup
+Connection id "0HLDMFQUCRSJA" started.
+Connection id "0HLDMFQUCRSJ9" started.
+Connection id "0HLDMFQUCRSJ9" received FIN.
+Connection id "0HLDMFQUCRSJ9" disconnecting.
+Connection id "0HLDMFQUCRSJA" received FIN.
+Connection id "0HLDMFQUCRSJ9" stopped.
+Connection id "0HLDMFQUCRSJA" disconnecting.
+Connection id "0HLDMFQUCRSJA" stopped.
+Connection id "0HLDMFQUCRSJA" sending FIN.
+LibuvConnection.Start() 0HLDMFQUCRSJ9
+Connection id "0HLDMFQUCRSJB" started.
+Connection id "0HLDMFQUCRSJC" started.
+Connection id "0HLDMFQUCRSJD" started.
+Request starting HTTP/1.1 GET http://localhost:2244/  
+Processing request /
+Connection id "0HLDMFQUCRSJB" completed keep alive response.
+Request finished in 49.1687ms 200 
+Request starting HTTP/1.1 GET http://localhost:2244/favicon.ico  
+Processing request /favicon.ico
+Connection id "0HLDMFQUCRSJB" completed keep alive response.
+Request finished in 5.2223ms 200 
+Connection id "0HLDMFQUCRSJD" received FIN.
+Connection id "0HLDMFQUCRSJD" disconnecting.
+Connection id "0HLDMFQUCRSJD" sending FIN.
+Connection id "0HLDMFQUCRSJD" stopped.
+UbReadCb
+Hosting shutdown
+Connection id "0HLDMFQUCRSJB" disconnecting.
+Connection id "0HLDMFQUCRSJC" disconnecting.
+Some connections failed to close gracefully during server shutdown.
+Some connections failed to abort during server shutdown.
+Failed to gracefully close Kestrel.
