@@ -12,12 +12,30 @@ using Microsoft.Extensions.FileProviders;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.DependencyInjection;
 using MetanitExample.Services;
+using Microsoft.Extensions.Configuration;
 
 namespace MetanitExample
 {
     public class Startup
     {
         private IServiceCollection services;
+        private IConfiguration AppConfiguration { get; set; }
+
+        public Startup(IHostingEnvironment env)
+        {
+            //var builder = new ConfigurationBuilder().AddInMemoryCollection(new Dictionary<string, string>
+            //{
+            //    { "FirstName","Tom"},
+            //    { "Age","31"}
+            //});
+            //var builder = new ConfigurationBuilder().SetBasePath(env.WebRootPath).AddJsonFile("conf.json");
+            //var builder = new ConfigurationBuilder().SetBasePath(env.WebRootPath).AddXmlFile("conf.xml");
+            //var builder = new ConfigurationBuilder().SetBasePath(env.WebRootPath).AddJsonFile("db.json");
+            //var builder = new ConfigurationBuilder().SetBasePath(env.WebRootPath).AddJsonFile("content.json");
+            var builder = new ConfigurationBuilder().SetBasePath(Directory.GetCurrentDirectory()).AddTextFile("config.txt");
+
+            AppConfiguration = builder.Build();
+        }
 
         private static void Index(IApplicationBuilder app)
         {
@@ -53,6 +71,25 @@ namespace MetanitExample
             return responseStream.WriteAsync(responseBytes, 0, responseBytes.Length);
         }
 
+        private string GetSectionContent(IConfiguration configSection)
+        {
+            string sectionContent = "";
+            foreach (var section in configSection.GetChildren())
+            {
+                sectionContent += "\"" + section.Key + "\":";
+                if (section.Value == null)
+                {
+                    string subSectionContent = GetSectionContent(section);
+                    sectionContent += "{\n" + subSectionContent + "},\n";
+                }
+                else
+                {
+                    sectionContent += "\"" + section.Value + "\",\n";
+                }
+            }
+            return sectionContent;
+        }
+
         // This method gets called by the runtime. Use this method to add services to the container.
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
@@ -67,6 +104,29 @@ namespace MetanitExample
             services.AddTransient<IMessageSender, EmailMessageSender>();
             services.AddTimeService();
             services.AddTransient<MessageService>();
+            //services.AddTransient<ICounter, RandomCounter>();
+            //services.AddTransient<CounterService>();
+            //services.AddScoped<ICounter, RandomCounter>();
+            //services.AddScoped<CounterService>();
+            //services.AddSingleton<ICounter, RandomCounter>();
+            //services.AddSingleton<CounterService>();
+
+            //RandomCounter randomCounter = new RandomCounter();
+            //services.AddSingleton<ICounter>(randomCounter);
+            //services.AddSingleton<CounterService>(new CounterService(randomCounter));
+            services.AddTransient<RandomCounter>();
+            services.AddTransient<ICounter>(provider =>
+            {
+                var counter = provider.GetService<RandomCounter>();
+                return counter;
+            });
+            services.AddTransient<CounterService>();
+            services.AddTransient<IMessageSender>(provider =>
+            {
+                if (DateTime.Now.Hour >= 12) return new EmailMessageSender();
+                else return new SmsMessageSender();
+            });
+            services.AddTransient<TimeService>();
 
             this.services = services;
         }
@@ -282,7 +342,51 @@ namespace MetanitExample
             //    await context.Response.WriteAsync(messageSender3.Send());
             //});
 
-            app.UseMiddleware<MessageMiddleware>();
+            //app.UseMiddleware<MessageMiddleware>();
+
+            //app.UseMiddleware<CounterMiddleware>();
+
+            //app.UseMiddleware<TimerMiddleware>();
+            //app.Run(async (context) =>
+            //{
+            //    await context.Response.WriteAsync("Hello World!");
+            //});
+
+            //AppConfiguration["FirstName"] = "Alice";
+            //AppConfiguration["LastName"] = "Simpson";
+            //app.Run(async (context) =>
+            //{
+            //    await context.Response.WriteAsync(AppConfiguration["FirstName"] + " " + AppConfiguration["LastName"]);
+            //});
+
+            //var color = AppConfiguration["color"];
+            //var text = AppConfiguration["text"];
+            //app.Run(async (context) =>
+            //{
+            //    await context.Response.WriteAsync($"<p style='color:{color};'>{text}</p>");
+            //});
+
+            //IConfigurationSection connStrings = AppConfiguration.GetSection("ConnectionStrings");
+            //string defaultConnection = connStrings.GetSection("DefaultConnection").Value;
+            //string con = AppConfiguration["ConnectionStrings:DefaultConnection"];
+            //app.Run(async (context) =>
+            //{
+            //    context.Response.ContentType = "text/html;charset=utf-8";
+            //    await context.Response.WriteAsync(defaultConnection + " " + con);
+            //});
+
+            //string projectJsonContent = GetSectionContent(AppConfiguration);
+            //app.Run(async (context) =>
+            //{
+            //    await context.Response.WriteAsync("{\n" + projectJsonContent + "}");
+            //});
+
+            var color = AppConfiguration["color"];
+            var text = AppConfiguration["text"];
+            app.Run(async (context) =>
+            {
+                await context.Response.WriteAsync($"<p style='color:{color};'>{text}</p>");
+            });
         }
     }
 }

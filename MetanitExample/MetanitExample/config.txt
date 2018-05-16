@@ -1,0 +1,4 @@
+﻿color
+red
+text
+Hello ASP.NET Core

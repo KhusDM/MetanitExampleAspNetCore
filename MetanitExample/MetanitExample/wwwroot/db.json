@@ -1,0 +1,6 @@
+﻿{
+  "ConnectionStrings": {
+    "DefaultConnection": "Основная база данных",
+    "UsersContext": "База данных пользователей"
+  }
+}
