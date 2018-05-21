@@ -109,6 +109,16 @@ namespace MetanitExample
             await httpContext.Response.WriteAsync($"action: {action} | name: {name} | year:{year}");
         }
 
+        private async Task HandleInline(HttpContext httpContext)
+        {
+            var routeValues = httpContext.GetRouteData().Values;
+            var controller = routeValues["controller"].ToString();
+            var action = routeValues["action"].ToString();
+            var id = routeValues["id"]?.ToString();
+
+            await httpContext.Response.WriteAsync($"controller: {controller} | action: {action} | id: {id}");
+        }
+
         // This method gets called by the runtime. Use this method to add services to the container.
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
@@ -152,6 +162,8 @@ namespace MetanitExample
             //services.Configure<Person>(option => { option.Age = 22; });
 
             //this.services = services;
+
+            services.Configure<RouteOptions>(options => options.ConstraintMap.Add("position", typeof(PositionConstraint)));
 
             services.AddRouting();
         }
@@ -447,11 +459,15 @@ namespace MetanitExample
             //var myRouteHandler = new RouteHandler(Handle);
             //var routeBuilder = new RouteBuilder(app, myRouteHandler);
             //routeBuilder.MapRoute("default", "{action=Index}/{name}-{year}");
-            var routeBuilder = new RouteBuilder(app);
-            routeBuilder.MapRoute("{controller}/{action:alpha:minlength(6)}/{id?}",async context=> 
-            {
-                await context.Response.WriteAsync("e");
-            });
+            //var routeBuilder = new RouteBuilder(app);
+            //routeBuilder.MapRoute("{controller}/{action:alpha:minlength(6)}/{id?}",async context=> 
+            //{
+            //    await context.Response.WriteAsync("e");
+            //});
+
+            var myRouterHandler = new RouteHandler(HandleInline);
+            var routeBuilder = new RouteBuilder(app, myRouterHandler);
+            routeBuilder.MapRoute("default", "{controller}/{action}/{id:position?}");
 
             app.UseRouter(routeBuilder.Build());
 
